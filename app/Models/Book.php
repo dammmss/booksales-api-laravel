@@ -8,7 +8,7 @@ class Book extends Model
 {
     private $books = [
         [
-            'title' => 'pulang',
+            'title' => 'Pulang',
             'description' => 'Petualangan seorang pemuda yang kembali ke desa kelahirannya.',
             'price' => 40000,
             'stock' => 15,
@@ -17,7 +17,7 @@ class Book extends Model
             'author_id' => 1
         ],
         [
-            'title' => 'Sebuah seni untuk bersikap Bodo Amat',
+            'title' => 'Sebuah Seni untuk Bersikap Bodo Amat',
             'description' => 'Buku yang membahas tentang kehidupan dan filosofi hidup seseorang.',
             'price' => 25000,
             'stock' => 5,
@@ -36,7 +36,8 @@ class Book extends Model
         ],
     ];
 
-    public function getBooks() {
+    public function getBooks()
+    {
         return $this->books;
     }
 }

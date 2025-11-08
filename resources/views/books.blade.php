@@ -1,19 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <title>Selamat Datang</title>
+    <title>Daftar Buku</title>
 </head>
 <body>
-    <h1>Hallo</h1>
-    <p>Selamat datang di toko BookSales!</p>
+    <h1>Daftar Buku</h1>
 
-    @foreach ($books as $item )
+    @if(!empty($books))
         <ul>
-            <li>{{ $item['title'] }}</li>
-            <li>{{ $item['description'] }}</li>
-            <li>{{ $item['price'] }}</li>
-            <li>{{ $item['stock'] }}</li>
+            @foreach($books as $book)
+                <li>
+                    <strong>{{ $book['title'] }}</strong> <br>
+                    {{ $book['description'] }} <br>
+                    Harga: Rp{{ number_format($book['price'], 0, ',', '.') }} <br>
+                    Stok: {{ $book['stock'] }}
+                    <hr>
+                </li>
+            @endforeach
         </ul>
-    @endforeach
+    @else
+        <p>Tidak ada data buku.</p>
+    @endif
 </body>
 </html>

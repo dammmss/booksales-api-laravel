@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Daftar Author</title>
+    <title>Daftar Penulis</title>
 </head>
 <body>
-    <h2>Daftar Author</h2>
-    <table border="1" cellpadding="5">
-        <tr>
-            <th>ID</th>
-            <th>Nama Author</th>
-        </tr>
-        @foreach ($authors as $author)
-        <tr>
-            <td>{{ $author['id'] }}</td>
-            <td>{{ $author['name'] }}</td>
-        </tr>
-        @endforeach
-    </table>
-    <br>
-    <a href="{{ url('/genres') }}">Lihat Data Genre</a>
+    <h1>Daftar Penulis</h1>
+
+    @if(!empty($authors))
+        <ul>
+            @foreach($authors as $author)
+                <li>
+                    <strong>{{ $author['name'] }}</strong> <br>
+                    {{ $author['bio'] }}
+                    <hr>
+                </li>
+            @endforeach
+        </ul>
+    @else
+        <p>Tidak ada data penulis.</p>
+    @endif
 </body>
 </html>

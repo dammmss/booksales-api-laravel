@@ -4,20 +4,16 @@
     <title>Daftar Genre</title>
 </head>
 <body>
-    <h2>Daftar Genre</h2>
-    <table border="1" cellpadding="5">
-        <tr>
-            <th>ID</th>
-            <th>Nama Genre</th>
-        </tr>
-        @foreach ($genres as $genre)
-        <tr>
-            <td>{{ $genre['id'] }}</td>
-            <td>{{ $genre['name'] }}</td>
-        </tr>
-        @endforeach
-    </table>
-    <br>
-    <a href="{{ url('/authors') }}">Lihat Data Author</a>
+    <h1>Daftar Genre</h1>
+
+    @if(!empty($genres))
+        <ul>
+            @foreach($genres as $genre)
+                <li>{{ $genre['name'] }}</li>
+            @endforeach
+        </ul>
+    @else
+        <p>Tidak ada data genre.</p>
+    @endif
 </body>
 </html>

@@ -4,16 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Author
+class Author extends Model
 {
-    public static function all()
+    private $authors = [
+        [
+            'name' => 'Tere Liye',
+            'bio' => 'Penulis novel terkenal Indonesia yang dikenal dengan karya-karya bernuansa kehidupan dan moral.',
+        ],
+        [
+            'name' => 'Masashi Kishimoto',
+            'bio' => 'Penulis dan ilustrator manga terkenal asal Jepang, pencipta serial Naruto.',
+        ],
+        [
+            'name' => 'Mark Manson',
+            'bio' => 'Penulis buku pengembangan diri asal Amerika Serikat yang terkenal dengan gaya bahasanya yang lugas.',
+        ],
+    ];
+
+    public function getAuthors()
     {
-        return [
-            ['id' => 1, 'name' => 'J.K. Rowling'],
-            ['id' => 2, 'name' => 'George Orwell'],
-            ['id' => 3, 'name' => 'Isaac Asimov'],
-            ['id' => 4, 'name' => 'Stephen King'],
-            ['id' => 5, 'name' => 'Haruki Murakami'],
-        ];
+        return $this->authors;
     }
 }
