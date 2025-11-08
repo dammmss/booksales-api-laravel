@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('books', function (Blueprint $table) {
@@ -20,15 +17,19 @@ return new class extends Migration
             $table->string('title');
             $table->string('publisher');
             $table->integer('year');
+
+            // Relasi ke authors
             $table->unsignedBigInteger('author_id');
             $table->foreign('author_id')->references('id')->on('authors')->onDelete('cascade');
+
+            // Relasi ke genres
+            $table->unsignedBigInteger('genre_id')->nullable();
+            $table->foreign('genre_id')->references('id')->on('genres')->onDelete('set null');
+
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('books');

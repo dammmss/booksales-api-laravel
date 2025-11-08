@@ -3,18 +3,22 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Models\Author;
 
 class AuthorSeeder extends Seeder
 {
     public function run(): void
     {
-        DB::table('authors')->insert([
-            ['name' => 'Tere Liye', 'email' => 'tere@example.com', 'biography' => 'Penulis novel Indonesia.'],
-            ['name' => 'Masashi Kishimoto', 'email' => 'kishimoto@example.com', 'biography' => 'Mangaka Naruto.'],
-            ['name' => 'Mark Manson', 'email' => 'mark@example.com', 'biography' => 'Penulis pengembangan diri.'],
-            ['name' => 'Andrea Hirata', 'email' => 'andrea@example.com', 'biography' => 'Penulis Laskar Pelangi.'],
-            ['name' => 'Dewi Lestari', 'email' => 'dee@example.com', 'biography' => 'Penulis novel Supernova.'],
+        Author::create([
+            'name' => 'J.K. Rowling',
+            'bio' => 'Penulis seri Harry Potter',
+            'nationality' => 'Inggris',
+        ]);
+
+        Author::create([
+            'name' => 'J.R.R. Tolkien',
+            'bio' => 'Penulis The Lord of the Rings dan The Hobbit',
+            'nationality' => 'Inggris',
         ]);
     }
 }

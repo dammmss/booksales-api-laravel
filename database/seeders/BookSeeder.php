@@ -3,18 +3,34 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Models\Book;
 
 class BookSeeder extends Seeder
 {
     public function run(): void
     {
-        DB::table('books')->insert([
-            ['title' => 'Pulang', 'publisher' => 'Gramedia', 'year' => 2015, 'author_id' => 1],
-            ['title' => 'Naruto', 'publisher' => 'Shueisha', 'year' => 1999, 'author_id' => 2],
-            ['title' => 'Sebuah Seni untuk Bersikap Bodo Amat', 'publisher' => 'Gramedia', 'year' => 2016, 'author_id' => 3],
-            ['title' => 'Laskar Pelangi', 'publisher' => 'Bentang Pustaka', 'year' => 2005, 'author_id' => 4],
-            ['title' => 'Supernova', 'publisher' => 'Bentang Pustaka', 'year' => 2001, 'author_id' => 5],
+        Book::create([
+            'title' => 'Harry Potter',
+            'publisher' => 'Bloomsbury',
+            'year' => 1997,
+            'author_id' => 1,
+            'genre_id' => 1,
+            'description' => 'Petualangan penyihir muda di Hogwarts.',
+            'price' => 150000,
+            'stock' => 10,
+            'cover_photo' => 'harry_potter.jpg',
+        ]);
+
+        Book::create([
+            'title' => 'The Hobbit',
+            'publisher' => 'George Allen & Unwin',
+            'year' => 1937,
+            'author_id' => 2,
+            'genre_id' => 2,
+            'description' => 'Perjalanan Bilbo Baggins ke Gunung Sunyi.',
+            'price' => 175000,
+            'stock' => 8,
+            'cover_photo' => 'the_hobbit.jpg',
         ]);
     }
 }

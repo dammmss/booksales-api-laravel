@@ -2,18 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Genre extends Model
 {
-    private $genres = [
-        ['name' => 'Drama'],
-        ['name' => 'Action'],
-        ['name' => 'Motivasi'],
-    ];
+    use HasFactory;
 
-    public function getGenres()
-    {
-        return $this->genres;
-    }
+    protected $fillable = ['name', 'description'];
+
+    public $timestamps = true;
+
 }
