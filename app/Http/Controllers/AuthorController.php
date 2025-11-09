@@ -9,7 +9,8 @@ class AuthorController extends Controller
 {
     public function index()
     {
-        $authors = Author::with('books')->get();
+        $authors = Author::all();
+
         return response()->json([
             'success' => true,
             'message' => 'Get all authors',
@@ -21,8 +22,7 @@ class AuthorController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string',
-            'bio' => 'nullable|string',
-            'nationality' => 'nullable|string',
+            'country' => 'nullable|string'
         ]);
 
         $author = Author::create($validated);
@@ -36,9 +36,13 @@ class AuthorController extends Controller
 
     public function show($id)
     {
-        $author = Author::with('books')->find($id);
+        $author = Author::find($id);
+
         if (!$author) {
-            return response()->json(['success' => false, 'message' => 'Author not found'], 404);
+            return response()->json([
+                'success' => false,
+                'message' => 'Author not found'
+            ], 404);
         }
 
         return response()->json([
@@ -51,11 +55,16 @@ class AuthorController extends Controller
     public function update(Request $request, $id)
     {
         $author = Author::find($id);
+
         if (!$author) {
-            return response()->json(['success' => false, 'message' => 'Author not found'], 404);
+            return response()->json([
+                'success' => false,
+                'message' => 'Author not found'
+            ], 404);
         }
 
         $author->update($request->all());
+
         return response()->json([
             'success' => true,
             'message' => 'Author updated successfully',
@@ -66,11 +75,16 @@ class AuthorController extends Controller
     public function destroy($id)
     {
         $author = Author::find($id);
+
         if (!$author) {
-            return response()->json(['success' => false, 'message' => 'Author not found'], 404);
+            return response()->json([
+                'success' => false,
+                'message' => 'Author not found'
+            ], 404);
         }
 
         $author->delete();
+
         return response()->json([
             'success' => true,
             'message' => 'Author deleted successfully'
