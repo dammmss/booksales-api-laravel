@@ -63,7 +63,12 @@ class GenreController extends Controller
             ], 404);
         }
 
-        $genre->update($request->all());
+        $validated = $request->validate([
+            'name' => 'sometimes|required|string',
+            'description' => 'nullable|string'
+        ]);
+
+        $genre->update($validated);
 
         return response()->json([
             'success' => true,

@@ -22,7 +22,8 @@ class AuthorController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string',
-            'country' => 'nullable|string'
+            'bio' => 'nullable|string',
+            'nationality' => 'nullable|string'
         ]);
 
         $author = Author::create($validated);
@@ -63,7 +64,13 @@ class AuthorController extends Controller
             ], 404);
         }
 
-        $author->update($request->all());
+        $validated = $request->validate([
+            'name' => 'sometimes|required|string',
+            'bio' => 'nullable|string',
+            'nationality' => 'nullable|string'
+        ]);
+
+        $author->update($validated);
 
         return response()->json([
             'success' => true,
