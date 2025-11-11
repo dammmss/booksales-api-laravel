@@ -9,7 +9,7 @@ class AdminMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-        // Pastikan user sudah login
+        
         if (!$request->user()) {
             return response()->json([
                 'success' => false,
@@ -17,7 +17,7 @@ class AdminMiddleware
             ], 401);
         }
 
-        // Cek apakah role user adalah admin
+        
         if ($request->user()->role !== 'admin') {
             return response()->json([
                 'success' => false,
